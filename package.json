@@ -5,10 +5,18 @@
   "type": "module",
   "main": "dist-electron/main.js",
   "license": "MIT",
+  "description": "An Simple systems resource",
   "author": {
     "name": "João Graça",
     "url": "https://joaograca.dev/",
     "email": "mail@joaograca.dev"
+  },
+  "repository": {
+    "type": "Gitlab",
+    "url": "https://gitlab.com/jcggraca/hardware-info"
+  },
+  "engines": {
+    "node": ">=24"
   },
   "scripts": {
     "dev": "npm-run-all --parallel dev:react dev:electron",

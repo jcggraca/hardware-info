@@ -38,7 +38,7 @@ test("should create a custom menu", async () => {
 
   expect(menu).not.toBeNull();
   expect(menu?.items).toHaveLength(2);
-  expect(menu?.items[0].submenu?.items).toHaveLength(2);
+  expect(menu?.items[0].submenu?.items).toHaveLength(3);
   expect(menu?.items[1].submenu?.items).toHaveLength(3);
   expect(menu?.items[1].label).toBe("View");
 });

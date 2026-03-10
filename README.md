@@ -14,8 +14,8 @@ Hardware Info is a simple yet powerful monitor for your system resources, builde
 2. Clone the repo and enter the cloned folder, for example with these commands:
 
 ```
-git clone https://gitlab.com/jcggraca/hardwareInfo.git
-cd HardwareInfo
+git clone https://gitlab.com/jcggraca/hardware-info.git
+cd hardware-info
 ```
 
 Make sure all dependencies are installed by running pnpm install
