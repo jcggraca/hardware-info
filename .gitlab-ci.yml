@@ -54,17 +54,12 @@ upload_release:
   rules:
     - if: $CI_COMMIT_TAG
   script:
-    - echo "Creating release for $CI_COMMIT_TAG"
-  release:
-    name: "Release $CI_COMMIT_TAG"
-    description: "Hardware Info automatic release for $CI_COMMIT_TAG"
-    tag_name: "$CI_COMMIT_TAG"
-    ref: "$CI_COMMIT_SHA"
-    assets:
-      links:
-        - name: "Windows Installer (NSIS)"
-          url: "${CI_PROJECT_URL}/-/jobs/artifacts/${CI_COMMIT_TAG}/raw/dist/hardware-info-setup-${CI_COMMIT_TAG}.exe?job=build_job"
-        - name: "Windows Portable"
-          url: "${CI_PROJECT_URL}/-/jobs/artifacts/${CI_COMMIT_TAG}/raw/dist/hardware-info-${CI_COMMIT_TAG}.exe?job=build_job"
-        - name: "Linux AppImage"
-          url: "${CI_PROJECT_URL}/-/jobs/artifacts/${CI_COMMIT_TAG}/raw/dist/hardware-info-${CI_COMMIT_TAG}.AppImage?job=build_job"
+    - |
+      release-cli create \
+        --name "Release $CI_COMMIT_TAG" \
+        --description "Automatic release for $CI_COMMIT_TAG" \
+        --tag-name "$CI_COMMIT_TAG" \
+        --ref "$CI_COMMIT_SHA" \
+        --assets-link "{\"name\":\"Windows Installer\",\"url\":\"$CI_PROJECT_URL/-/jobs/$CI_JOB_ID/artifacts/raw/dist/hardware-info-setup-${CI_COMMIT_TAG}.exe\"}" \
+        --assets-link "{\"name\":\"Windows Portable\",\"url\":\"$CI_PROJECT_URL/-/jobs/$CI_JOB_ID/artifacts/raw/dist/hardware-info-${CI_COMMIT_TAG}.exe\"}" \
+        --assets-link "{\"name\":\"Linux AppImage\",\"url\":\"$CI_PROJECT_URL/-/jobs/$CI_JOB_ID/artifacts/raw/dist/hardware-info-${CI_COMMIT_TAG}.AppImage\"}"
