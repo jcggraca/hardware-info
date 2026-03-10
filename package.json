@@ -4,6 +4,7 @@
   "version": "0.1.0",
   "type": "module",
   "main": "dist-electron/main.js",
+  "license": "MIT",
   "author": {
     "name": "João Graça",
     "url": "https://joaograca.dev/",

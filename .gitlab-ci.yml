@@ -1,0 +1,38 @@
+# We use the 'wine' image so we can package the .exe for Windows on a Linux runner
+image: electronuserland/builder:wine
+
+stages:
+  - build
+
+# Caching the npm cache and node_modules speeds up your pipeline significantly
+cache:
+  key:
+    files:
+      - package-lock.json
+  paths:
+    - .npm/
+    - node_modules/
+
+build_job:
+  stage: build
+  script:
+    # 1. Install dependencies using the npm cache for speed
+    - npm ci --cache .npm --prefer-offline
+
+    # 2. Build for both Linux (AppImage/deb) and Windows (nsis/portable)
+    # electron-builder detects 'wine' in the image and handles the Windows build
+    - npx electron-builder --linux --win
+
+  artifacts:
+    name: "$CI_PROJECT_NAME-$CI_COMMIT_REF_SLUG"
+    paths:
+      - dist/*.exe
+      - dist/*.AppImage
+      - dist/*.deb
+      - dist/latest.yml
+    expire_in: 1 week
+
+  rules:
+    # Only run on the main branch or when a Git Tag is pushed
+    - if: $CI_COMMIT_BRANCH == "main"
+    - if: $CI_COMMIT_TAG
