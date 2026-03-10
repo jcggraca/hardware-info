@@ -14,10 +14,12 @@
         "target": "dmg"
     },
     "linux": {
+        "artifactName": "hardware-info.${ext}",
         "target": "AppImage",
         "category": "Utility"
     },
     "win": {
+        "artifactName": "hardware-info-setup.${ext}",
         "target": [
             "portable",
             "nsis"
