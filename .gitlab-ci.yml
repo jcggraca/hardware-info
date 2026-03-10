@@ -63,8 +63,8 @@ upload_release:
     assets:
       links:
         - name: "Windows Installer (NSIS)"
-          url: "${CI_PROJECT_URL}/-/jobs/artifacts/${CI_COMMIT_TAG}/raw/dist/Hardware%20Info%20Setup%20${CI_COMMIT_TAG}.exe?job=build_job"
+          url: "${CI_PROJECT_URL}/-/jobs/artifacts/${CI_COMMIT_TAG}/raw/dist/hardware-info-setup-${CI_COMMIT_TAG}.exe?job=build_job"
         - name: "Windows Portable"
-          url: "${CI_PROJECT_URL}/-/jobs/artifacts/${CI_COMMIT_TAG}/raw/dist/Hardware%20Info%20${CI_COMMIT_TAG}.exe?job=build_job"
+          url: "${CI_PROJECT_URL}/-/jobs/artifacts/${CI_COMMIT_TAG}/raw/dist/hardware-info-${CI_COMMIT_TAG}.exe?job=build_job"
         - name: "Linux AppImage"
-          url: "${CI_PROJECT_URL}/-/jobs/artifacts/${CI_COMMIT_TAG}/raw/dist/Hardware%20Info-${CI_COMMIT_TAG}.AppImage?job=build_job"
+          url: "${CI_PROJECT_URL}/-/jobs/artifacts/${CI_COMMIT_TAG}/raw/dist/hardware-info-${CI_COMMIT_TAG}.AppImage?job=build_job"
