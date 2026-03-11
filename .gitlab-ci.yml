@@ -47,6 +47,7 @@ build_job:
     expire_in: 1 week
 
 upload_release:
+  stage: release
   script:
     - |
       release-cli create \
