@@ -61,6 +61,6 @@ upload_release:
         --description "Automatic release for $CI_COMMIT_TAG" \
         --tag-name "$CI_COMMIT_TAG" \
         --ref "$CI_COMMIT_SHA" \
-        --upload "dist/hardware-info-portable.exe" \
-        --upload "dist/hardware-info-setup.exe" \
-        --upload "dist/hardware-info.AppImage"
+        --assets-link "{\"name\":\"Windows Portable\",\"url\":\"${CI_PROJECT_URL}/-/jobs/${CI_JOB_ID}/artifacts/raw/dist/hardware-info-portable.exe\"}" \
+        --assets-link "{\"name\":\"Windows Installer\",\"url\":\"${CI_PROJECT_URL}/-/jobs/${CI_JOB_ID}/artifacts/raw/dist/hardware-info-setup.exe\"}" \
+        --assets-link "{\"name\":\"Linux AppImage\",\"url\":\"${CI_PROJECT_URL}/-/jobs/${CI_JOB_ID}/artifacts/raw/dist/hardware-info.AppImage\"}"
