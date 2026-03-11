@@ -19,16 +19,10 @@
         "category": "Utility"
     },
     "win": {
-        "artifactName": "hardware-info-${target}.${ext}",
+        "artifactName": "hardware-info.${ext}",
         "target": [
-            {
-                "target": "portable",
-                "arch": "x64"
-            },
-            {
-                "target": "nsis",
-                "arch": "x64"
-            }
+            "portable",
+            "nsis"
         ]
     }
 }
