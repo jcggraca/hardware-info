@@ -38,8 +38,9 @@ build_job:
   artifacts:
     name: "$CI_PROJECT_NAME-$CI_COMMIT_REF_SLUG"
     paths:
-      - dist/*.exe
-      - dist/*.AppImage
+      - dist/hardware-info-portable.exe
+      - dist/hardware-info-nsis.exe
+      - dist/hardware-info.AppImage
     expire_in: 1 week
   rules:
     - if: $CI_COMMIT_BRANCH == "main"
@@ -54,12 +55,13 @@ upload_release:
   rules:
     - if: $CI_COMMIT_TAG
   script:
+    - echo "Creating release for $CI_COMMIT_TAG"
     - |
       release-cli create \
         --name "Release $CI_COMMIT_TAG" \
         --description "Automatic release for $CI_COMMIT_TAG" \
         --tag-name "$CI_COMMIT_TAG" \
         --ref "$CI_COMMIT_SHA" \
-        --assets-link "{\"name\":\"Windows Installer\",\"url\":\"$CI_PROJECT_URL/-/jobs/$CI_JOB_ID/artifacts/raw/dist/hardware-info-setup-${CI_COMMIT_TAG}.exe\"}" \
-        --assets-link "{\"name\":\"Windows Portable\",\"url\":\"$CI_PROJECT_URL/-/jobs/$CI_JOB_ID/artifacts/raw/dist/hardware-info-${CI_COMMIT_TAG}.exe\"}" \
-        --assets-link "{\"name\":\"Linux AppImage\",\"url\":\"$CI_PROJECT_URL/-/jobs/$CI_JOB_ID/artifacts/raw/dist/hardware-info-${CI_COMMIT_TAG}.AppImage\"}"
+        --upload "dist/hardware-info-portable.exe" \
+        --upload "dist/hardware-info-nsis.exe" \
+        --upload "dist/hardware-info.AppImage"

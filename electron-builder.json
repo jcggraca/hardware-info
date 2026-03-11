@@ -19,10 +19,16 @@
         "category": "Utility"
     },
     "win": {
-        "artifactName": "hardware-info-setup.${ext}",
+        "artifactName": "hardware-info-${target}.${ext}",
         "target": [
-            "portable",
-            "nsis"
+            {
+                "target": "portable",
+                "arch": "x64"
+            },
+            {
+                "target": "nsis",
+                "arch": "x64"
+            }
         ]
     }
 }
