@@ -56,5 +56,5 @@ upload_release:
       release-cli create \
         --name "Release $CI_COMMIT_TAG" \
         --tag-name "$CI_COMMIT_TAG" \
-        --assets-link "{\"name\":\"Windows\",\"url\":\"${CI_API_V4_URL}/projects/${CI_PROJECT_ID}/packages/generic/hardware-info/${CI_COMMIT_TAG}/hardware-info.exe\"}" \
+        --assets-link "{\"name\":\"Windows Setup\",\"url\":\"${CI_API_V4_URL}/projects/${CI_PROJECT_ID}/packages/generic/hardware-info/${CI_COMMIT_TAG}/hardware-info.exe\"}" \
         --assets-link "{\"name\":\"Linux AppImage\",\"url\":\"${CI_API_V4_URL}/projects/${CI_PROJECT_ID}/packages/generic/hardware-info/${CI_COMMIT_TAG}/hardware-info.AppImage\"}"
